@@ -1,14 +1,36 @@
 import log from "../../assets/log.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
+    const { createUser } = useAuth();
+    const navigate = useNavigate();
     const {
       register,
       handleSubmit,
+      reset,
       formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        createUser(data.email, data.password)
+          .then(() => {
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Successfully Sign up",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
+    }
     return (
       <div className="max-w-6xl mx-auto px-4">
         <div className="hero min-h-screen">
@@ -59,7 +81,7 @@ const Register = () => {
                     type="password"
                     placeholder="Type your password"
                     className="input input-bordered"
-                    {...register("password", { required: true })}
+                    {...register("password", { required: true, minLength: 6 })}
                   />
                   {errors.password && (
                     <span className="text-red-500 mt-2">
@@ -76,7 +98,7 @@ const Register = () => {
                   <input
                     className="btn btn-primary"
                     type="submit"
-                    value="Login"
+                    value="Register"
                   />
                 </div>
               </form>
@@ -87,11 +109,12 @@ const Register = () => {
                   to="/login"
                 >
                   {" "}
-                   Login
+                  Login
                 </Link>
               </p>
             </div>
           </div>
+          <Toaster position="top-left" reverseOrder={false} />
         </div>
       </div>
     );

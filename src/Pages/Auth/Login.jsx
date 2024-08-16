@@ -1,16 +1,49 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import log from "../../assets/log.png"
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { signIn, googleSignIn } = useAuth();
+  const navigate = useNavigate();
     const {
       register,
       handleSubmit,
+      reset,
       formState: { errors },
     } = useForm();
 
-      const onSubmit = (data) => console.log(data);
+      const onSubmit = (data) => {
+        signIn(data.email, data.password)
+          .then(() => {
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Successfully logged in",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(location.state ? location.state : "/");
+          })
+          .catch();
+      };
+
+      const handleGoogleLogIn = () => {
+        googleSignIn()
+        .then(()=>{
+           Swal.fire({
+             position: "center",
+             icon: "success",
+             title: "Successfully logged in",
+             showConfirmButton: false,
+             timer: 1500,
+           });
+           navigate(location.state ? location.state : "/");
+        })
+      }
     return (
       <div className="max-w-6xl mx-auto px-4">
         <div className="hero min-h-screen">
@@ -72,7 +105,7 @@ const Login = () => {
                 -Or login with-
               </p>
               <div className="flex text-2xl items-center gap-3 justify-center">
-                <button>
+                <button onClick={handleGoogleLogIn}>
                   <FcGoogle />
                 </button>
               </div>
