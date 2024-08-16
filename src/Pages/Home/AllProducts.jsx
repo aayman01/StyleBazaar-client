@@ -83,7 +83,24 @@ const AllProducts = () => {
               value="Search"
             />
           </form>
-          
+          {/* sort */}
+          <div>
+            <select
+              onChange={(e) => {
+                setSort(e.target.value);
+                refetch();
+              }}
+              defaultValue=""
+              value={sort}
+              className="select select-bordered w-full"
+            >
+              <option disabled value="">
+                Sort by price
+              </option>
+              <option value="dsc">Price: low to high</option>
+              <option value="asc">Price: high to low</option>
+            </select>
+          </div>
         </div>
         <div className="grid grid-cols-3 gap-5">
           {products?.map((product) => (
