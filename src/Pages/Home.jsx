@@ -1,8 +1,12 @@
+import useAllProducts from "../Hooks/useAllProducts";
+import NavBar from "./NavBar/NavBar";
 
 const Home = () => {
+  const {products} = useAllProducts();
+  console.log(products)
     return (
       <div>
-        <h2 className="text-3xl text-red-500 font-bold">This is Home</h2>
+        <NavBar/>
     
       </div>
     );
