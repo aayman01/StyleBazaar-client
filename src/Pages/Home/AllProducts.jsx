@@ -3,6 +3,7 @@ import Card from "../../Components/Card";
 import useAllProducts from "../../Hooks/useAllProducts";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { ClipLoader } from "react-spinners";
+import Filter from "../../Components/Filter";
 
 const AllProducts = () => {
   const [searchText, setSearchText] = useState("");
@@ -16,7 +17,7 @@ const AllProducts = () => {
     itemsPerPage,
     sort
   );
-  console.log(products);
+  // console.log(products);
   const axiosPublic = useAxiosPublic();
 
   // search functionality
@@ -65,7 +66,7 @@ const AllProducts = () => {
           </p>
         </div>
         <div className="flex items-center justify-center gap-7 px-10 pb-10">
-          {/* search */}
+          {/* search box */}
           <form
             onSubmit={handleSearch}
             className="flex items-center justify-center gap-1"
@@ -78,7 +79,7 @@ const AllProducts = () => {
               className="input input-bordered w-full"
             />
             <input
-              className="btn text-white bg-[#076cec] hover:bg-[#0072CE]"
+              className="btn text-white bg-green-400"
               type="submit"
               value="Search"
             />
@@ -102,6 +103,7 @@ const AllProducts = () => {
             </select>
           </div>
         </div>
+        <Filter></Filter>
         <div className="grid grid-cols-3 gap-5">
           {products?.map((product) => (
             <Card key={product.id} product={product}></Card>

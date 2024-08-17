@@ -1,14 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useAllProducts = (
-  searchText,
-  currentPage,
-  itemsPerPage,
-  sort,
-) => {
+const useFilter = ( brand, category, maxPrice, minPrice ) => {
   const axiosPublic = useAxiosPublic();
-  // console.log("in useProduct", brand, category, searchText, currentPage);
 
   const {
     data: products = [],
@@ -19,7 +13,7 @@ const useAllProducts = (
     queryKey: ["products"],
     queryFn: async () => {
       const res = await axiosPublic.get(
-        `/products?search=${searchText}&page=${currentPage}&size=${itemsPerPage}&sort=${sort}}`
+        `/products?&brand=${brand}&category=${category}&maxPrice=${maxPrice}&minPrice=${minPrice}`
       );
       // console.log(res.data);
       return res.data;
@@ -28,4 +22,4 @@ const useAllProducts = (
   return { products, isPending, refetch, isLoading };
 };
 
-export default useAllProducts;
+export default useFilter;

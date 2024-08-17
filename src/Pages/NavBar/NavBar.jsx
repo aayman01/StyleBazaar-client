@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const NavBar = () => {
@@ -15,7 +15,7 @@ const NavBar = () => {
       <>
         <div className="navbar bg-green-300">
           <div className="flex-1">
-            <a className="btn btn-ghost text-2xl font-bold">StyleBazar</a>
+            <Link to="/" className="btn btn-ghost text-2xl font-bold">StyleBazar</Link>
           </div>
           <div className="flex-none gap-2">
             {/* <div className="form-control">

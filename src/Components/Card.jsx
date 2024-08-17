@@ -1,7 +1,7 @@
 
 // eslint-disable-next-line react/prop-types
 const Card = ({product}) => {
-    console.log(product)
+    // console.log(product)
     return (
       <div className="card card-compact bg-base-100 shadow-xl h-[450px]">
         <figure>
@@ -10,8 +10,8 @@ const Card = ({product}) => {
         <div className="card-body">
           <h2 className="text-2xl font-bold">{product?.productName}</h2>
           <p className="text-gray-800">{product?.description}</p>
-          <div>
-            <p className="font-medium">Brand Name: {product?.brandName}</p>
+          <div className="flex justify-between mb-5">
+            <p className="font-medium">Brand Name: {product?.brand}</p>
             <p className="font-medium">Category: {product?.category}</p>
           </div>
           <div className="card-actions justify-end">
