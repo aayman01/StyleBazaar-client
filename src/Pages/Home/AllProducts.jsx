@@ -90,15 +90,15 @@ const AllProducts = () => {
                 setSort(e.target.value);
                 refetch();
               }}
-              defaultValue=""
               value={sort}
               className="select select-bordered w-full"
             >
               <option disabled value="">
-                Sort by price
+                Sort by
               </option>
               <option value="dsc">Price: low to high</option>
               <option value="asc">Price: high to low</option>
+              <option value="new">Newest first</option>
             </select>
           </div>
         </div>
