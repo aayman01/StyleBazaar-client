@@ -1,4 +1,4 @@
-This project is a fully functional e-commerce website built using the MERN stack.
+## StyleBazaar
 ## Live link: https://visionary-dusk-134e5c.netlify.app
 ## Features
 
