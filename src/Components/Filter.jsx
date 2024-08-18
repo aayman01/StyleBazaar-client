@@ -22,7 +22,7 @@ const Filter = () => {
       );
     }
     return (
-      <form onSubmit={handleFilter} className="flex gap-3 mb-20">
+      <form onSubmit={handleFilter} className="flex flex-col md:flex-row  gap-3 mb-20">
         <select
           onChange={(e) => {
             setBrand(e.target.value);
@@ -58,14 +58,14 @@ const Filter = () => {
           placeholder="Max Price"
           onChange={(e) => setMaxPrice(e.target.value)}
           value={maxPrice}
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full"
         />
         <input
           type="text"
           placeholder="Min Price"
           onChange={(e) => setMinPrice(e.target.value)}
           value={minPrice}
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full"
         />
         <input
           className="btn bg-green-400 text-white"

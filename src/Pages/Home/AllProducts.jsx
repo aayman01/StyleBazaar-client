@@ -65,7 +65,7 @@ const AllProducts = () => {
             Find All Your Product You Need
           </p>
         </div>
-        <div className="flex items-center justify-center gap-7 px-10 pb-10">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-7 md:px-10 pb-10">
           {/* search box */}
           <form
             onSubmit={handleSearch}
@@ -85,7 +85,7 @@ const AllProducts = () => {
             />
           </form>
           {/* sort */}
-          <div>
+          <div className="">
             <select
               onChange={(e) => {
                 setSort(e.target.value);
@@ -104,7 +104,7 @@ const AllProducts = () => {
           </div>
         </div>
         <Filter></Filter>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {products?.map((product) => (
             <Card key={product.id} product={product}></Card>
           ))}
