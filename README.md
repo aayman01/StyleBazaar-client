@@ -1,5 +1,5 @@
 This project is a fully functional e-commerce website built using the MERN stack.
-## Live link : https://visionary-dusk-134e5c.netlify.app/
+## Live link: https://visionary-dusk-134e5c.netlify.app
 ## Features
 
 - **Product Listing:** Browse through a list of products with pagination.
@@ -15,7 +15,17 @@ This project is a fully functional e-commerce website built using the MERN stack
   - Tailwind CSS
   - Daisy UI
 
-- **Backend:**
-  - Node.js
-  - Express.js
-  - MongoDB (native driver, no Mongoose)
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed on your machine.
+- MongoDB installed locally or a MongoDB Atlas account for a cloud database.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/mern-ecommerce.git
+   cd styleBaazar-clent
+
